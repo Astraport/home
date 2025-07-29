@@ -7,67 +7,96 @@
     <!-- Подключение Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Подключение шрифта Inter из Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* Темный фон */
-            color: #e2e8f0; /* Светлый текст */
+            /* Глубокий темный фон с легким градиентом */
+            background: linear-gradient(to bottom right, #0F172A, #1E293B);
+            color: #E2E8F0; /* Светлый текст */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
         .card {
-            background-color: #2d3748; /* Темно-серый фон карточек */
-            border-radius: 1rem; /* Скругленные углы */
-            padding: 1.5rem;
+            background-color: #2D3748; /* Темно-серый фон карточек */
+            border-radius: 1.5rem; /* Более скругленные углы */
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Более выраженная тень */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Тонкая светлая обводка */
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px) scale(1.02); /* Более выраженный подъем и увеличение */
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3); /* Усиленная тень */
+            background-color: #374151; /* Немного светлее при наведении */
         }
         .card-icon {
-            font-size: 3rem; /* Размер иконки */
-            margin-bottom: 1rem;
-            color: #63b3ed; /* Синий цвет для иконок */
+            font-size: 4rem; /* Увеличенный размер иконки */
+            margin-bottom: 1.5rem;
+            color: #A78BFA; /* Яркий фиолетовый цвет для иконок */
+            text-shadow: 0 0 15px rgba(167, 139, 250, 0.6); /* Свечение иконки */
         }
         .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #a0aec0; /* Светло-серый для заголовков */
+            font-size: 1.75rem; /* Увеличенный размер заголовка */
+            font-weight: 800; /* Более жирный шрифт */
+            margin-bottom: 0.75rem;
+            color: #F8FAFC; /* Почти белый для заголовков */
+            letter-spacing: -0.025em; /* Немного уменьшенный интервал между буквами */
         }
         .card-description {
-            font-size: 1rem;
-            color: #cbd5e0; /* Более светлый серый для описаний */
-            margin-bottom: 1rem;
-            flex-grow: 1; /* Позволяет описанию занимать доступное пространство */
+            font-size: 1.05rem; /* Немного увеличенный размер описания */
+            color: #CBD5E0; /* Светло-серый для описаний */
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6; /* Улучшенный межстрочный интервал */
         }
         .card-link-button {
             display: inline-block;
-            background-color: #4299e1; /* Синяя кнопка */
+            background: linear-gradient(to right, #8B5CF6, #EC4899); /* Градиентная кнопка */
             color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
+            padding: 0.9rem 2rem; /* Увеличенный padding */
+            border-radius: 1rem; /* Более скругленные углы */
             text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s ease-in-out;
+            font-weight: 700;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
         .card-link-button:hover {
-            background-color: #3182ce; /* Темнее синий при наведении */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        .card-link-button:active {
+            transform: scale(0.95); /* Эффект нажатия */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Анимация для заголовка */
+        .gradient-text-animation {
+            background-size: 200% auto;
+            animation: gradientShift 3s linear infinite alternate;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4">
+<body>
     <main class="max-w-6xl mx-auto w-full">
-        <h1 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 leading-tight">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 gradient-text-animation leading-tight">
             Мои Проекты и Игры
         </h1>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Тренажер дыхания -->
             <a href="https://astraport.github.io/breath/" target="_blank" rel="noopener noreferrer" class="card">
                 <div class="card-icon">🌬️</div>
@@ -136,6 +165,26 @@
                     Для истинных ценителей рока! "Рок-викторина" бросает вызов вашей музыкальной эрудиции. Угадайте легендарные группы по их хитам, погрузитесь в мир тяжелой музыки и докажите, что вы настоящий рок-гуру!
                 </p>
                 <span class="card-link-button">Слушать и угадывать</span>
+            </a>
+
+            <!-- Пример геймофикации -->
+            <a href="https://astraport.github.io/gamification/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-icon">🎮</div>
+                <h2 class="card-title">Пример геймофикации</h2>
+                <p class="card-description">
+                    Превратите рутину в увлекательное приключение! Этот пример геймификации покажет, как вовлечь пользователей и удерживать их внимание, превращая обычные действия в захватывающий квест. Узнайте, как сделать ваш проект по-настоящему притягательным!
+                </p>
+                <span class="card-link-button">Узнать больше</span>
+            </a>
+
+            <!-- Тренажёр "Твоя игра" -->
+            <a href="https://astraport.github.io/Your-game/" target="_blank" rel="noopener noreferrer" class="card">
+                <div class="card-icon">💡</div> <!-- Иконка для эрудиции/игры -->
+                <h2 class="card-title">Тренажёр "Твоя игра"</h2>
+                <p class="card-description">
+                    Готовы проверить свою эрудицию и бросить вызов интеллекту? "Твоя игра" — это захватывающий тренажёр, который заставит ваш мозг работать на полную катушку. Отточите свои знания и станьте настоящим знатоком!
+                </p>
+                <span class="card-link-button">Начать игру</span>
             </a>
         </div>
     </main>
